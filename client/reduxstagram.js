@@ -4,4 +4,17 @@ import { render } from 'react-dom';
 
 import css from './styles/style.styl';
 
-render(<p>Hello</p>,document.getElementById('root'))
+import Main from './components/Main.js';
+import Single from './components/Single.js';
+import PhotoGrid from './components/Photogrid.js';
+import{ Router, Route, IndexRoute, browserHistory} from 'react-router';
+
+const router=(
+  <Router history={browserHistory}>
+    <Route path="/" component={Main}>
+      <IndexRoute component={PhotoGrid}></IndexRoute>
+      <Route path="/view/:postID" component={Single}></Route>
+    </Route>
+  </Router>
+)
+render(router,document.getElementById('root'))
